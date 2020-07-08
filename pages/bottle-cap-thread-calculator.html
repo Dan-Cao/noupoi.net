@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="english">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Bottle cap thread calculator &ndash; Noupoi.net</title>
+
+    <!-- Meta -->
+    <meta name="description" content="Noupoi.net &ndash; ">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Social -->
+    <meta property="og:type" content="article"/>
+    <meta property="og:title" content="Bottle cap thread calculator"/>
+    <meta property="og:description" content=""/>
+    <meta property="og:site_name" content="Noupoi.net" />
+    <meta property="og:url" content="/pages/bottle-cap-thread-calculator.html"/>
+    <meta property="og:image" content=""/>
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Bottle cap thread calculator">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:url" content="/pages/bottle-cap-thread-calculator.html">
+    <meta name="twitter:image" content="">
+
+    <!-- Feed -->
+    <link rel="alternate" type="application/atom+xml" href="/feeds/all.atom.xml" title="Noupoi.net Atom Feed" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:regular,bold">
+    <link rel="stylesheet" type="text/css" href="/theme/css/w3.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/style.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/jqcloud.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/theme/css/pygments-highlight-github.css">
+    <link rel="stylesheet" type="text/css" href="/static/pure-min.css">
+
+    <!-- Icon -->
+
+    <!-- JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="/theme/js/jqcloud.min.js"></script>
+  </head>
+
+  <body>
+    <div class="w3-row w3-card w3-white">
+      <header id="header">
+        <a href="" id="header-logo" title="Home">N</a>
+        <nav id="header-menu">
+          <ul>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green"><a href="/pages/tools.html">Tools</a></li>
+            <li class="w3-bottombar w3-border-white w3-hover-border-green" ><a href="/category/blog.html">Blog</a></li>
+          </ul>
+        </nav>
+      </header>
+    </div>
+
+
+
+    <br><br><br>
+
+    <article>
+      <header class="w3-container col-main">
+        <h1>Bottle cap thread calculator</h1>
+        <div class="post-info">
+          <div class="w3-opacity w3-margin-right w3-margin-bottom" style="flex-grow: 1;">
+            
+          </div>
+        </div>
+      </header>
+
+      <br>
+
+      <div class="col-main w3-container">
+        <section id="content">
+          <p>This tool calculates the thread specifications of bottle caps for modelling in CAD programs such as Fusion 360. </p>
+<p>This is intended for use with bottles that conform to <a href="https://www.astm.org/Standards/D2911.htm">ASTM D2911</a>,
+also known as "GPI" or "SPI" thread finishes. </p>
+<p>(While ASTM charges $60 for the spec, the important parts can be found <a href="https://www.sanleplastics.com/solution/plastic-bottle-cap-threads-specifications/">freely online</a>.)</p>
+<p>This assumes that you are modelling the thread by creating a coil with a triangular cross section, then
+cutting the tip of the triangle off with a cylindrical hole. </p>
+<h3>Calculator</h3>
+<script type="text/javascript">
+    var presets = {
+        '': null,
+        '24 - 415': {tMax: 23.88, eMax: 21.74, threadWidth: 2.13, angleDeg: 2, angleArcmin: 34, tolerance: 0.2},
+        '28 - 415': {tMax: 27.63, eMax: 25.25, threadWidth: 2.39, angleDeg: 2, angleArcmin: 57, tolerance: 0.2},
+        '33 - 415': {tMax: 31.13, eMax: 29.74, threadWidth: 2.39, angleDeg: 2, angleArcmin: 31, tolerance: 0.2},
+    };
+
+    function populatePresets() {
+        $.each(presets, function (name) {
+            var option = new Option(name);
+            $("#threadPreset").append(option);
+        });
+    }
+
+    function loadPreset() {
+        var selection = $("#threadPreset").val();
+        var config = presets[selection];
+        if (config) {
+            $("#tMax").val(config.tMax);
+            $("#eMax").val(config.eMax);
+            $("#threadWidth").val(config.threadWidth);
+            $("#angleDegrees").val(config.angleDeg);
+            $("#angleArcmins").val(config.angleArcmin);
+            $("#tolerance").val(config.tolerance);
+        }
+
+        calculate();
+    }
+
+    function getFloatById(id) {
+        return parseFloat($("#" + id).val());
+    }
+
+    function getTanDeg(deg) {
+        var rad = deg * Math.PI / 180;
+        return Math.tan(rad);
+    }
+
+    function calculate() {
+        var tMax = getFloatById("tMax");
+        var eMax = getFloatById("eMax");
+        var threadWidth = getFloatById("threadWidth");
+        var angleDegrees = getFloatById("angleDegrees");
+        var angleArcmins = getFloatById("angleArcmins");
+        var tolerance = getFloatById("tolerance");
+
+        var threadDiameter = tMax + tolerance;
+        var pitch = getTanDeg(angleDegrees + angleArcmins / 60) * Math.PI * threadDiameter;
+        var sectionHeight = getTanDeg(60) * threadWidth / 2;
+        var holeDiameter = eMax + tolerance;
+
+        $("#threadDiameter").val(threadDiameter.toFixed(2));
+        $("#pitch").val(pitch.toFixed(2));
+        $("#height").val(sectionHeight.toFixed(2));
+        $("#holeDiameter").val(holeDiameter.toFixed(2));
+    }
+
+    window.onload = populatePresets;
+</script>
+
+<form class="pure-form pure-form-aligned">
+    <fieldset>
+        <div class="pure-control-group">
+            <label for="threadPreset">Preset</label>
+            <select id="threadPreset" onchange="loadPreset()"></select>
+        </div>
+    </fieldset>
+</form>
+
+<form class="pure-form pure-form-aligned">
+    <fieldset>
+        <legend>Neck finish specifications</legend>
+        <div class="pure-control-group">
+            <label for="tMax">T<sub>max</sub></label>
+            <input type="text" id="tMax" placeholder="thread outside diameter"/>
+            <!--            <span class="pure-form-message-inline">This is a required field.</span>-->
+        </div>
+        <div class="pure-control-group">
+            <label for="eMax">E<sub>max</sub></label>
+            <input type="text" id="eMax" placeholder="neck outside diameter"/>
+        </div>
+        <div class="pure-control-group">
+            <label for="threadWidth">Thread width (<i>a</i>)</label>
+            <input type="text" id="threadWidth" placeholder="thread width"/>
+        </div>
+        <div class="pure-control-group">
+            <label for="aligned_angle">Helix angle &beta;</label>
+            <span id="aligned_angle">
+                <input type="number" id="angleDegrees" placeholder="degrees"/>
+                <span class="pure-form-message-inline">&deg;</span>
+                <input type="number" id="angleArcmins" placeholder="arcminutes"/>
+                <span class="pure-form-message-inline">&prime;</span>
+            </span>
+        </div>
+        <div class="pure-control-group">
+            <label for="tolerance">Tolerance</label>
+            <input type="text" id="tolerance" placeholder="tolerance"/>
+            <span class="pure-form-message-inline">0.2 mm is suggested</span>
+        </div>
+        <div class="pure-controls">
+            <button type="button" class="pure-button pure-button-primary" onclick="calculate()">Calculate</button>
+        </div>
+    </fieldset>
+</form>
+
+<form class="pure-form pure-form-aligned">
+    <fieldset>
+        <legend>Cap thread parameters</legend>
+        <div class="pure-control-group">
+            <label for="threadDiameter">Diameter</label>
+            <input type="text" id="threadDiameter" value="" readonly=""/>
+        </div>
+        <div class="pure-control-group">
+            <label for="pitch">Pitch</label>
+            <input type="text" id="pitch" value="" readonly=""/>
+        </div>
+        <div class="pure-control-group">
+            <label for="height">Section height</label>
+            <input type="text" id="height" value="" readonly=""/>
+        </div>
+        <div class="pure-control-group">
+            <label for="holeDiameter">Hole diameter</label>
+            <input type="text" id="holeDiameter" value="" readonly=""/>
+            <span class="pure-form-message-inline">Used to flatten the tip of the thread</span>
+        </div>
+    </fieldset>
+</form>
+
+<h3>References</h3>
+<p><a href="https://www.mjspackaging.com/resources/training-technical-specs/neck-finish-information">How to identify the neck finish on a bottle</a></p>
+<p><a href="https://www.youtube.com/watch?v=-BS9KR-B9U4">How to model a threaded cap in Fusion 360</a></p>
+<p><a href="https://www.premierformtools.co.uk/assets/pdf/DC18.pdf">Helix angle calcuation</a></p>
+        </section>
+        
+
+        <br><br><br>
+        
+      </div>
+    </article>
+
+
+    <footer id="footer">
+      <div id="footer-copyright" class="w3-center w3-small w3-text-grey w3-padding-48">
+        <span>
+          &copy;
+          2020          Noupoi
+ | <a href="/feeds/all.atom.xml">Atom feed <i class="fa fa-rss" aria-hidden="true"></i></a>        </span>
+      </div>
+    </footer>
+
+    <!-- Google Analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-139603630-2', 'auto');
+      ga('send', 'pageview');
+    </script>
+
+  </body>
+</html>
