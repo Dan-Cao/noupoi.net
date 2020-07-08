@@ -17,7 +17,7 @@ venv\Scripts\Activate.ps1
 
 Install dependencies
 ```
-pip install pelican[Markdown] ghp-import invoke 
+pip install -r requirements.txt
 
 git clone https://github.com/petrnohejl/MinimalXY.git
 pelican-themes --install "<path_to_repo>\MinimalXY" --verbose
