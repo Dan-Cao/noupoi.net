@@ -82,6 +82,7 @@ also known as "GPI" or "SPI" thread finishes. </p>
 cutting the tip of the triangle off with a cylindrical hole. </p>
 <h3>Calculator</h3>
 <script type="text/javascript">
+    var decimals = 3;
     var presets = {
         '': null,
         '24 - 415': {tMax: 23.88, eMax: 21.74, threadWidth: 2.13, angleDeg: 2, angleArcmin: 34, tolerance: 0.2},
@@ -133,10 +134,10 @@ cutting the tip of the triangle off with a cylindrical hole. </p>
         var sectionHeight = getTanDeg(60) * threadWidth / 2;
         var holeDiameter = eMax + tolerance;
 
-        $("#threadDiameter").val(threadDiameter.toFixed(2));
-        $("#pitch").val(pitch.toFixed(2));
-        $("#height").val(sectionHeight.toFixed(2));
-        $("#holeDiameter").val(holeDiameter.toFixed(2));
+        $("#threadDiameter").val(threadDiameter.toFixed(decimals));
+        $("#pitch").val(pitch.toFixed(decimals));
+        $("#height").val(sectionHeight.toFixed(decimals));
+        $("#holeDiameter").val(holeDiameter.toFixed(decimals));
     }
 
     window.onload = populatePresets;
