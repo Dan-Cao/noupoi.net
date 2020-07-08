@@ -17,18 +17,23 @@ venv\Scripts\Activate.ps1
 
 Install dependencies
 ```
-pip install pelican[Markdown] invoke
+pip install pelican[Markdown] ghp-import invoke 
 
 git clone https://github.com/petrnohejl/MinimalXY.git
 pelican-themes --install "<path_to_repo>\MinimalXY" --verbose
 ```
 
-Build
+Build and test
 ```
-pelican content
+invoke reserve
 ```
 
-Test locally
+Deploy
 ```
-pelican --listen
+invoke gh-pages
 ```
+
+## Notes
+
+TypeError when running deployment?
+  * https://github.com/getpelican/pelican/issues/2489#issuecomment-472176621

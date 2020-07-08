@@ -15,7 +15,7 @@ cutting the tip of the triangle off with a cylindrical hole.
 
 ### Calculator
 
-{! content/static/thread_calculator.html !}
+{! includes/thread_calculator.html !}
 
 ### References
 

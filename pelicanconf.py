@@ -5,7 +5,8 @@ from datetime import date
 
 AUTHOR = 'Noupoi'
 SITENAME = 'Noupoi.net'
-SITEURL = ''
+SITEURL = 'https://www.noupoi.net'
+# SITEURL = ''
 
 PATH = 'content'
 
