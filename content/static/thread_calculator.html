@@ -1,0 +1,129 @@
+<script type="text/javascript">
+    var presets = {
+        '': null,
+        '24 - 415': {tMax: 23.88, eMax: 21.74, threadWidth: 2.13, angleDeg: 2, angleArcmin: 34, tolerance: 0.2},
+        '28 - 415': {tMax: 27.63, eMax: 25.25, threadWidth: 2.39, angleDeg: 2, angleArcmin: 57, tolerance: 0.2},
+        '33 - 415': {tMax: 31.13, eMax: 29.74, threadWidth: 2.39, angleDeg: 2, angleArcmin: 31, tolerance: 0.2},
+    };
+
+    function populatePresets() {
+        $.each(presets, function (name) {
+            var option = new Option(name);
+            $("#threadPreset").append(option);
+        });
+    }
+
+    function loadPreset() {
+        var selection = $("#threadPreset").val();
+        var config = presets[selection];
+        if (config) {
+            $("#tMax").val(config.tMax);
+            $("#eMax").val(config.eMax);
+            $("#threadWidth").val(config.threadWidth);
+            $("#angleDegrees").val(config.angleDeg);
+            $("#angleArcmins").val(config.angleArcmin);
+            $("#tolerance").val(config.tolerance);
+        }
+
+        calculate();
+    }
+
+    function getFloatById(id) {
+        return parseFloat($("#" + id).val());
+    }
+
+    function getTanDeg(deg) {
+        var rad = deg * Math.PI / 180;
+        return Math.tan(rad);
+    }
+
+    function calculate() {
+        var tMax = getFloatById("tMax");
+        var eMax = getFloatById("eMax");
+        var threadWidth = getFloatById("threadWidth");
+        var angleDegrees = getFloatById("angleDegrees");
+        var angleArcmins = getFloatById("angleArcmins");
+        var tolerance = getFloatById("tolerance");
+
+        var threadDiameter = tMax + tolerance;
+        var pitch = getTanDeg(angleDegrees + angleArcmins / 60) * Math.PI * threadDiameter;
+        var sectionHeight = getTanDeg(60) * threadWidth / 2;
+        var holeDiameter = eMax + tolerance;
+
+        $("#threadDiameter").val(threadDiameter.toFixed(2));
+        $("#pitch").val(pitch.toFixed(2));
+        $("#height").val(sectionHeight.toFixed(2));
+        $("#holeDiameter").val(holeDiameter.toFixed(2));
+    }
+
+    window.onload = populatePresets;
+</script>
+
+<form class="pure-form pure-form-aligned">
+    <fieldset>
+        <div class="pure-control-group">
+            <label for="threadPreset">Preset</label>
+            <select id="threadPreset" onchange="loadPreset()"></select>
+        </div>
+    </fieldset>
+</form>
+
+<form class="pure-form pure-form-aligned">
+    <fieldset>
+        <legend>Neck finish specifications</legend>
+        <div class="pure-control-group">
+            <label for="tMax">T<sub>max</sub></label>
+            <input type="text" id="tMax" placeholder="thread outside diameter"/>
+            <!--            <span class="pure-form-message-inline">This is a required field.</span>-->
+        </div>
+        <div class="pure-control-group">
+            <label for="eMax">E<sub>max</sub></label>
+            <input type="text" id="eMax" placeholder="neck outside diameter"/>
+        </div>
+        <div class="pure-control-group">
+            <label for="threadWidth">Thread width (<i>a</i>)</label>
+            <input type="text" id="threadWidth" placeholder="thread width"/>
+        </div>
+        <div class="pure-control-group">
+            <label for="aligned_angle">Helix angle &beta;</label>
+            <span id="aligned_angle">
+                <input type="number" id="angleDegrees" placeholder="degrees"/>
+                <span class="pure-form-message-inline">&deg;</span>
+                <input type="number" id="angleArcmins" placeholder="arcminutes"/>
+                <span class="pure-form-message-inline">&prime;</span>
+            </span>
+        </div>
+        <div class="pure-control-group">
+            <label for="tolerance">Tolerance</label>
+            <input type="text" id="tolerance" placeholder="tolerance"/>
+            <span class="pure-form-message-inline">0.2 mm is suggested</span>
+        </div>
+        <div class="pure-controls">
+            <button type="button" class="pure-button pure-button-primary" onclick="calculate()">Calculate</button>
+        </div>
+    </fieldset>
+</form>
+
+
+<form class="pure-form pure-form-aligned">
+    <fieldset>
+        <legend>Cap thread parameters</legend>
+        <div class="pure-control-group">
+            <label for="threadDiameter">Diameter</label>
+            <input type="text" id="threadDiameter" value="" readonly=""/>
+        </div>
+        <div class="pure-control-group">
+            <label for="pitch">Pitch</label>
+            <input type="text" id="pitch" value="" readonly=""/>
+        </div>
+        <div class="pure-control-group">
+            <label for="height">Section height</label>
+            <input type="text" id="height" value="" readonly=""/>
+        </div>
+        <div class="pure-control-group">
+            <label for="holeDiameter">Hole diameter</label>
+            <input type="text" id="holeDiameter" value="" readonly=""/>
+            <span class="pure-form-message-inline">Used to flatten the tip of the thread</span>
+        </div>
+    </fieldset>
+</form>
