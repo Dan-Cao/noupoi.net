@@ -5,8 +5,7 @@ from datetime import date
 
 AUTHOR = 'Noupoi'
 SITENAME = 'Noupoi.net'
-SITEURL = 'https://www.noupoi.net'
-# SITEURL = ''
+SITEURL = ''
 
 PATH = 'content'
 
@@ -36,7 +35,8 @@ MARKDOWN = {
     'extensions': ['mdx_include']
 }
 
-STATIC_PATHS = ['static']
+STATIC_PATHS = ['static', 'extra/CNAME']
+EXTRA_PATH_METADATA = {'extra/CNAME': {'path': 'CNAME'}, }
 
 # Theme settings
 THEME = 'MinimalXY'
