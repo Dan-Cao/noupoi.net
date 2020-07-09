@@ -4,42 +4,42 @@ xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitem
 xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
-<loc>/</loc>
-<lastmod>2020-07-09T16:30:48-00:00</lastmod>
+<loc>https://www.noupoi.net/</loc>
+<lastmod>2020-07-09T16:36:31-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/pages/bottle-cap-thread-calculator.html</loc>
+<loc>https://www.noupoi.net/pages/bottle-cap-thread-calculator.html</loc>
 <lastmod>2020-07-08T10:20:00+01:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/pages/tools.html</loc>
+<loc>https://www.noupoi.net/pages/tools.html</loc>
 <lastmod>2020-07-08T10:20:00+01:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/test-post.html</loc>
+<loc>https://www.noupoi.net/test-post.html</loc>
 <lastmod>2020-07-08T10:20:00+01:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/category/blog.html</loc>
+<loc>https://www.noupoi.net/category/blog.html</loc>
 <lastmod>2020-07-08T10:20:00-00:01</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>/author/noupoi.html</loc>
+<loc>https://www.noupoi.net/author/noupoi.html</loc>
 <lastmod>2020-07-08T10:20:00-00:01</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
