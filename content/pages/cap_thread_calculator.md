@@ -1,7 +1,6 @@
 Title: Bottle cap thread calculator
 Date: 2020-07-08 10:20
 Category: Tools
-status: hidden
 
 This tool calculates the thread specifications of bottle caps for modelling in CAD programs such as Fusion 360. 
 

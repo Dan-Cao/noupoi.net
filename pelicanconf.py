@@ -28,6 +28,8 @@ LINKS = (('Pelican', 'http://getpelican.com/'),
 
 DEFAULT_PAGINATION = False
 
+DISPLAY_PAGES_ON_MENU = False
+
 # Uncomment following line if you want document-relative URLs when developing
 # RELATIVE_URLS = True
 
@@ -35,8 +37,11 @@ MARKDOWN = {
     'extensions': ['mdx_include']
 }
 
-STATIC_PATHS = ['static', 'extra/CNAME']
-EXTRA_PATH_METADATA = {'extra/CNAME': {'path': 'CNAME'}, }
+STATIC_PATHS = ['static', 'extra/CNAME', 'extra/robots.txt']
+EXTRA_PATH_METADATA = {
+    'extra/CNAME': {'path': 'CNAME'},
+    'extra/robots.txt': {'path': 'robots.txt'},
+}
 
 # Theme settings
 THEME = 'MinimalXY'
@@ -67,6 +72,22 @@ SOCIAL = (
 
 # Menu
 MENUITEMS = (
+    ('Tools', '/pages/tools.html'),
     # ('Categories', '/' + CATEGORIES_SAVE_AS),
     # ('Archive', '/' + ARCHIVES_SAVE_AS),
 )
+PLUGINS = ["pelican.plugins.sitemap", ]
+
+SITEMAP = {
+    "format": "xml",
+    "priorities": {
+        "articles": 0.5,
+        "indexes": 0.5,
+        "pages": 0.5
+    },
+    "changefreqs": {
+        "articles": "monthly",
+        "indexes": "daily",
+        "pages": "monthly"
+    }
+}
