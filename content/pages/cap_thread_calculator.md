@@ -23,3 +23,5 @@ cutting the tip of the triangle off with a cylindrical hole.
 [How to model a threaded cap in Fusion 360](https://www.youtube.com/watch?v=-BS9KR-B9U4)
 
 [Helix angle calcuation](https://www.premierformtools.co.uk/assets/pdf/DC18.pdf)
+
+[Preset calculation spreadsheet](/static/thread_specs.xlsx)
