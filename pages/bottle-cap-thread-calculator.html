@@ -85,9 +85,35 @@ cutting the tip of the triangle off with a cylindrical hole. </p>
     var decimals = 3;
     var presets = {
         '': null,
-        '24 - 415': {tMax: 23.88, eMax: 21.74, threadWidth: 2.13, angleDeg: 2, angleArcmin: 34, tolerance: 0.2},
-        '28 - 415': {tMax: 27.63, eMax: 25.25, threadWidth: 2.39, angleDeg: 2, angleArcmin: 57, tolerance: 0.2},
-        '33 - 415': {tMax: 31.13, eMax: 29.74, threadWidth: 2.39, angleDeg: 2, angleArcmin: 31, tolerance: 0.2},
+        '13 - SP415': {tMax: 13.06, eMax: 11.53, threadWidth: 1.14, angleDeg: 3, angleArcmin: 11, tolerance: 0.2},
+        '15 - SP415': {tMax: 14.76, eMax: 13.23, threadWidth: 1.14, angleDeg: 2, angleArcmin: 48, tolerance: 0.2},
+        '18 - SP400, SP410, SP415': {tMax: 17.88, eMax: 15.75, threadWidth: 2.13, angleDeg: 3, angleArcmin: 30, tolerance: 0.2},
+        '20 - SP400, SP410, SP415': {tMax: 19.89, eMax: 17.75, threadWidth: 2.13, angleDeg: 3, angleArcmin: 7, tolerance: 0.2},
+        '22 - SP400, SP410, SP415': {tMax: 21.89, eMax: 19.76, threadWidth: 2.13, angleDeg: 2, angleArcmin: 49, tolerance: 0.2},
+        '24 - SP400, SP410, SP415': {tMax: 23.87, eMax: 21.74, threadWidth: 2.13, angleDeg: 2, angleArcmin: 34, tolerance: 0.2},
+        '28 - SP400, SP410, SP415': {tMax: 27.64, eMax: 25.25, threadWidth: 2.39, angleDeg: 2, angleArcmin: 57, tolerance: 0.2},
+        '30 - SP400': {tMax: 28.62, eMax: 26.23, threadWidth: 2.39, angleDeg: 2, angleArcmin: 51, tolerance: 0.2},
+        '33 - SP400, SP415': {tMax: 32.14, eMax: 29.74, threadWidth: 2.39, angleDeg: 2, angleArcmin: 31, tolerance: 0.2},
+        '35 - SP400': {tMax: 34.64, eMax: 32.25, threadWidth: 2.39, angleDeg: 2, angleArcmin: 21, tolerance: 0.2},
+        '38 - SP400': {tMax: 37.5, eMax: 35.1, threadWidth: 2.39, angleDeg: 2, angleArcmin: 9, tolerance: 0.2},
+        '40 - SP400': {tMax: 40.13, eMax: 37.75, threadWidth: 2.39, angleDeg: 2, angleArcmin: 0, tolerance: 0.2},
+        '43 - SP400': {tMax: 42, eMax: 39.62, threadWidth: 2.39, angleDeg: 1, angleArcmin: 55, tolerance: 0.2},
+        '45 - SP400': {tMax: 44.2, eMax: 41.81, threadWidth: 2.39, angleDeg: 1, angleArcmin: 49, tolerance: 0.2},
+        '48 - SP400': {tMax: 47.5, eMax: 45.11, threadWidth: 2.39, angleDeg: 1, angleArcmin: 41, tolerance: 0.2},
+        '51 - SP400': {tMax: 50, eMax: 47.6, threadWidth: 2.39, angleDeg: 1, angleArcmin: 36, tolerance: 0.2},
+        '53 - SP400': {tMax: 52.5, eMax: 50.11, threadWidth: 2.39, angleDeg: 1, angleArcmin: 31, tolerance: 0.2},
+        '58 - SP400': {tMax: 56.5, eMax: 54.1, threadWidth: 2.39, angleDeg: 1, angleArcmin: 25, tolerance: 0.2},
+        '60 - SP400': {tMax: 59.5, eMax: 57.1, threadWidth: 2.39, angleDeg: 1, angleArcmin: 20, tolerance: 0.2},
+        '63 - SP400': {tMax: 62.51, eMax: 60.12, threadWidth: 2.39, angleDeg: 1, angleArcmin: 16, tolerance: 0.2},
+        '66 - SP400': {tMax: 65.5, eMax: 63.12, threadWidth: 2.39, angleDeg: 1, angleArcmin: 13, tolerance: 0.2},
+        '70 - SP400': {tMax: 69.5, eMax: 67, threadWidth: 2.39, angleDeg: 1, angleArcmin: 8, tolerance: 0.2},
+        '75 - SP400': {tMax: 74, eMax: 71.6, threadWidth: 2.39, angleDeg: 1, angleArcmin: 4, tolerance: 0.2},
+        '77 - SP400': {tMax: 77.1, eMax: 74.7, threadWidth: 2.39, angleDeg: 1, angleArcmin: 1, tolerance: 0.2},
+        '83 - SP400': {tMax: 83, eMax: 80, threadWidth: 3.05, angleDeg: 1, angleArcmin: 9, tolerance: 0.2},
+        '89 - SP400': {tMax: 89.18, eMax: 86.12, threadWidth: 3.05, angleDeg: 1, angleArcmin: 4, tolerance: 0.2},
+        '100 - SP400': {tMax: 100, eMax: 96.95, threadWidth: 3.05, angleDeg: 0, angleArcmin: 59, tolerance: 0.2},
+        '110 - SP400': {tMax: 110, eMax: 107, threadWidth: 3.05, angleDeg: 0, angleArcmin: 51, tolerance: 0.2},
+        '120 - SP400': {tMax: 120, eMax: 117, threadWidth: 3.05, angleDeg: 0, angleArcmin: 47, tolerance: 0.2},
     };
 
     function populatePresets() {
@@ -215,6 +241,7 @@ cutting the tip of the triangle off with a cylindrical hole. </p>
 <p><a href="https://www.mjspackaging.com/resources/training-technical-specs/neck-finish-information">How to identify the neck finish on a bottle</a></p>
 <p><a href="https://www.youtube.com/watch?v=-BS9KR-B9U4">How to model a threaded cap in Fusion 360</a></p>
 <p><a href="https://www.premierformtools.co.uk/assets/pdf/DC18.pdf">Helix angle calcuation</a></p>
+<p><a href="/static/thread_specs.xlsx">Preset calculation spreadsheet</a></p>
         </section>
         
 
