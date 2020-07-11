@@ -37,7 +37,7 @@ MARKDOWN = {
     'extensions': ['mdx_include']
 }
 
-STATIC_PATHS = ['static', 'extra/CNAME', 'extra/robots.txt']
+STATIC_PATHS = ['static', 'extra/CNAME', 'extra/robots.txt', 'pages/cap_thread_calculator.html']
 EXTRA_PATH_METADATA = {
     'extra/CNAME': {'path': 'CNAME'},
     'extra/robots.txt': {'path': 'robots.txt'},
@@ -72,11 +72,10 @@ SOCIAL = (
 
 # Menu
 MENUITEMS = (
-    ('Tools', '/pages/tools.html'),
     # ('Categories', '/' + CATEGORIES_SAVE_AS),
     # ('Archive', '/' + ARCHIVES_SAVE_AS),
 )
-PLUGINS = ["pelican.plugins.sitemap", ]
+PLUGINS = ["pelican.plugins.sitemap", "pelican_alias" ]
 
 SITEMAP = {
     "format": "xml",
