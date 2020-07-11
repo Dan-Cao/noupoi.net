@@ -19,7 +19,6 @@ Install dependencies
 ```
 pip install -r requirements.txt
 
-git clone --recursive https://github.com/getpelican/pelican-plugins
 git clone https://github.com/petrnohejl/MinimalXY.git
 pelican-themes --install "<path_to_repo>\MinimalXY" --verbose
 ```
